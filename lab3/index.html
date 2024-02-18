@@ -263,7 +263,8 @@
                             <code>application/json</code> moet zijn.
                         </li>
                         <li>Stop de trace.</li>
-                        <li>Filter enkel de pakketjes die behoren tot deze interactie (tip: zoek één pakket uit deze interactie en rechtermuisklik er op...).</li>
+                        <li>Filter enkel de pakketjes die behoren tot deze interactie (tip: zoek één pakket uit deze
+                            interactie en rechtermuisklik er op...).</li>
                         <li>Kan je te weten komen welk type server heeft geantwoord? Denk eerst na over waar die info
                             zou kunnen staan.</li>
                 </section>
@@ -363,16 +364,20 @@
                 <section>
                     <p>Open oefentrace_https_1 (download van DigitAP)</p>
                     <ul>
+                        <li>Beperk eerst de conversatie tot de hosts betrokken bij het eerste pakket.</li>
                         <li>
-                        Noteer welke pakketnummers overeenstemmen met welke pijlen op het diagram van de TLS
-                        handshake.</li>
+                            Noteer welke pakketnummers overeenstemmen met welke pijlen op het diagram van de TLS
+                            handshake.</li>
                         <li>Welke versie TLS wordt hier gebruikt?</li>
-                        <li>Welke versie geeft client als ondersteunde versie door?</li>
-                        <li>Geef 3 mogelijke versleutel algoritmes die de client ondersteunt</li>
-                        <li>Welk versleutel algoritme zal gebruikt worden?</li>
-                        <li>Bekijk lijn 20 van de client hello, welke versie wordt hier gebruikt?</li>
-                        <li>Stelt de client nog andere versies voor ?</li>
+                        <li>Geef 3 mogelijke versleutel algoritmes ("cipher suites") die de client ondersteunt</li>
+                        <li>Welk versleutel algoritme spreken de client en server samen af?</li>
+                        <li>Wie heeft het certificaat van de server ondertekend?</li>
+                    </ul>
+                    <ul>
+                        <li>Schakel de filter uit en bekijk pakket 20, welke versie wordt hier gebruikt?</li>
+                        <li>Stelt de client nog andere versies voor?</li>
                         <li>Geef 3 mogelijke versleutel algoritmes die de client voorstelt</li>
+                        <li>Waar staat de bijbehorende server hello?</li>
                     </ul>
                 </section>
                 <section>
