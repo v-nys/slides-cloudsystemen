@@ -12,5 +12,10 @@ Start een presentatie door volgend commando te runnen van uit de repository root
 Dit start een web server die luistert naar poort 8000.
 
 ## Korte uitleg
-`git clone --recurse-submodules https://github.com/AP-IT-GH/slides-cloudsystemen.git; npm i; cd reveal.js; npm i; cd ..; node server.js labX`, waarbij `X` het nummer van het labo is.
+
+### Eerste keer
+`git clone --recurse-submodules https://github.com/AP-IT-GH/slides-cloudsystemen.git; cd slides-cloudsystemen; npm i; cd reveal.js; npm i; cd ..; node server.js labX`, waarbij `X` het nummer van het labo is.
 Surf dan naar `localhost:8000`.
+
+### Updaten
+`git pull`
