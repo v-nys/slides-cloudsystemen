@@ -1,0 +1,335 @@
+<!doctype htmlopzij>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Labo 4</title>
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/dist/theme/black.css">
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                De firma Netnoobs doet nog eens beroep op jullie expertise. Ze hebben een paar websites:
+                <ul>
+                    <li>www.netnoobs.be (voor de externe website)</li>
+                    <li>bestelling.netnoobs.be (voor hun intern bestellingensysteem)</li>
+                </ul>
+                Welk type certificaat zou je hun aanraden?
+
+                Geef een indicatie wat dit hen zou kunnen kosten.
+
+                Genereer een "certificate signing request" om dit certificaat te kunnen aanmaken.
+            </section>
+            <section>
+                Geëncrypteerd verkeer in Wireshark
+            </section>
+            <section>
+                Laptops dicht<br>
+                GSM's weg
+            </section>
+            <section>
+                Statelessness
+                <aside class="notes">
+                    <ul>
+                        Voordeel: eenvoudiger protocol<br>
+                        Is goed voor client en server<br>
+                        Minder feilbaar
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                Cookies
+                <aside class="notes">
+                    <ul>
+                        <li><strong>protocol zelf</strong> bevat geen implementatie state</li>
+                        <li>cookies: later uitgevonden</li>
+                        <li>past binnen trend om voort te bouwen op eenvoudigere basis</li>
+                        <li>typisch 4 componenten</li>
+                        <ul>
+                            <li>cookie header in request naar geassocieerde website</li>
+                            <li>cookie header in response</li>
+                            <li>cookie zelf (bestandje in browser)</li>
+                            <li>databasetabel (als server iets moet "onthouden")</li>
+                        </ul>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <img src="./images/cookies-sessions.webp" alt="interactie client-server bij gebruik sessiecookie" />
+            </section>
+            <section>
+                Nadelen
+                <aside class="notes">
+                    <ul>
+                        <li>privacy (tracking cookies specifiek, zelfs voor developers niet a priori duidelijk)</li>
+                        <li>security (bestandje dat bv. een login voorstelt, kan gestolen worden)</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <img src="./images/ghostery.svg" alt="logo Ghostery" />
+            </section>
+            <section>
+<pre>
+<code>// ongewone schrijfwijze
+allCookies = document.cookie; // "a=b;c=d;e=f"
+document.cookie = "g=h"; // stelt één cookie in</code>
+</pre>
+                <aside class="notes">
+                    Regel om cookie in te stellen vertaalt dus naar één <code>Set-Cookie</code> header in response per
+                    keer dat we dit gebruiken.
+                </aside>
+            </section>
+            <section>
+                <ul>
+                    <li>max-age</li>
+                    <li>secure</li>
+                    <li>httponly</li>
+                </ul>
+                <aside class="notes">
+                    <ul>
+                        <li>max-age is vanzelfsprekend</li>
+                        <li>Secure = vereist HTTPS</li>
+                        <li>HttpOnly = niet toegankelijk met JS =/= enkel gewone HTTP! (tegen XSS)</li>
+                        <li>let op: kan nog steeds cookie gewoon kopiëren van iemands PC als ik toegang heb...</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <img src="./images/csrf_01.png" alt="voorbeeld cross-site request forgery" />
+                <aside class="notes">
+                    <ul>
+                        <li>voorbeeld CSRF</li>
+                        <li>"cross-site" = interactie tussen twee websites (via link, frame,...)</li>
+                        <li>ter verduidelijking: hoeft geen "phishing" te zijn</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                SameSite
+                <aside class="notes">
+                    <dl>
+                        <dt>none</dt>
+                        <dd>cookie wordt bij <em>elk</em> verzoek naar de bronwebsite verstuurd, ook als het verzoek
+                            getriggerd is door een andere website</dd>
+                        <dt>lax</dt>
+                        <dd>cookie zal verstuurd worden (enkel met request voor het geassocieerde domein) in geval van
+                            expliciete actie</dd>
+                        <dt>strict</dt>
+                        <dd>cookie zal voor geen enkel <strong>cross-site</strong> verzoek verstuurd worden</dd>
+                    </dl>
+                    None is enkel toegelaten met HTTPS, vermindert risico maar schakelt het niet volledig uit.
+                    Voorbeeld risico met <code>none</code>: JS op andere website die je bezoekt doet een fetch van de
+                    bronwebsite maar stuurt slechte gegevens mee. Je sessiecookie wordt mee verstuurd met die slechte
+                    gegevens...
+                </aside>
+            </section>
+            <section>
+                <p>Verklaar:</p>
+                <ul>
+                    <li>Session cookie</li>
+                    <li>Persistent cookie</li>
+                    <li>First-party cookie</li>
+                    <li>Third-party cookie</li>
+                    <li>Zombie cookie</li>
+                    <li>Tracking cookie</li>
+                </ul>
+            </section>
+            <section>
+                incognito mode
+                <aside class="notes">
+                    Niet "geen cookies", maar "geen persistente cookies".
+                </aside>
+            </section>
+            <section>
+                local storage
+                <aside class="notes">
+                    Niet gelinkt aan HTTP, access via JS. Ander toepassingsgebied.
+                    <!-- cursustekst: https://www.geeksforgeeks.org/local-storage-vs-cookies/ -->
+                </aside>
+            </section>
+            <section>
+                <section>
+                    Opdrachten
+                </section>
+                <section>www.ap.be
+                    <aside class="notes">
+                        Welke cookies worden hier ingesteld? Hoe zie je dit?
+                    </aside>
+                </section>
+                <section>amiunqiue.org<aside class="notes">Tracking zonder cookies, op basis van info die de browser ter
+                        beschikking stelt.</aside>
+                </section>
+            </section>
+            <section>
+                Caching
+                <aside class="notes">
+                    Al meegemaakt? Oude content, refresh lost probleem op.<br>
+                    Browser cache.<br>
+                    Eén van de redenen om externe CSS files te gebruiken.
+                </aside>
+            </section>
+            <section>
+                <img src="./images/proxyserver.png" alt="proxy server" />
+                <aside class="notes">
+                    <ul>
+                        <li>"goede" man in the middle</li>
+                        <li>bespaart bandbreedte (als zelfde sites regelmatig gebruikt worden)</li>
+                        <li>kan extra beveiligen</li>
+                        <li>kan surfgedrag werknemers beperken / monitoren</li>
+                        <li>gebruik TLS vereist installatie extra certificaat</li>
+                        <li>verwant aan VPN, maar focus ligt op caching vs. privacy</li>
+                        <li>soms beperkt tot enkel HTTP, maar bestaan variaties op het concept</li>
+                        <!-- lijstje: https://www.fortinet.com/resources/cyberglossary/proxy-server -->
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <img src="./images/mitmproxy.gif" alt="mitmproxy" />
+                <aside class="notes">
+                    <ul>
+                        <li>Lijkt op eerste zicht wat op Wireshark</li>
+                        <li>Securitytool, focus van andere proxy's kan anders zijn</li>
+                        <li>Kan berichten onderscheppen en aanpassen</li>
+                        <li>Kan hem zelf scripten (dus automatisch berichten aanpassen)</li>
+                        <li>Na installatie certificaat ook bruikbaar voor HTTPS</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <img src="https://docs.mitmproxy.org/stable/schematics/proxy-modes-flowchart.png"
+                    alt="flowchart types proxy" />
+            </section>
+            <section>
+                <section>
+                    Opdrachten
+                </section>
+                <section>
+                    <ol>
+                        <li>Installeer mitmproxy</li>
+                        <li>Start op met het commando <code>mitmproxy</code></li>
+                        <li>Configureer je browser om als HTTP-proxy localhost:8080 te gebruiken</li>
+                        <ul>
+                            <li>Zoek dit op voor jouw specifieke browser.</li>
+                        </ul>
+                        <li>Controleer dat dit werkt door naar neverssl.com te surfen (kijk naar je terminalvenster)</li>
+                        <li>Stop het commando <code>mitmproxy</code></li>
+                        <ul>
+                            <li>Gebruik de toets <code>q</code></li>
+                        </ul>
+                        <li>Na de les zet je alle originele settings terug.</li>
+                    </ol>
+                </section>
+                <section>
+                    <ol>
+                        <li>Bekijk het tutorialfilmpje op <a
+                                href="https://docs.mitmproxy.org/stable/mitmproxytutorial-interceptrequests/">deze
+                                pagina</a></li>
+                        <li>start het commando <code>mitmweb</code></li>
+                        <ul>
+                            <li>dit start de (grafische) webversie</li>
+                        </ul>
+                        <li>Navigeer in je browser naar neverssl.com</li>
+                        <li>Zoek het request in MITMWeb</li>
+                        <li>Zorg dat de gebruiker in plaats daarvan terechtkomt op https://bit.ly/3SOlqjY</li>
+                        <ul>
+                            <li>Gebruik de info uit de tutorial om het antwoord van de server aan te passen.</li>
+                        </ul>
+                    </ol>
+                </section>
+                <section>
+                    <ul>
+                        <li>Herstel je settings zodat je browser geen uitgaande proxy meer gebruikt.</li>
+                        <li>Een reverse proxy zit aan ontvangerkant.</li>
+                        <li>Lees de tekst tot en met "Listen port" op <a
+                                href="https://docs.mitmproxy.org/stable/concepts-modes/#reverse-proxy">deze pagina</a>
+                        </li>
+                        <li>Start de Express applicatie van van op DigitAP op.</li>
+                        <li>Zorg dat verkeer naar localhost:8080 wordt omgeleid naar neverssl.com</li>
+                        <li>Configureer de reverse proxy om requests te onderscheppen.</li>
+                        <li>Stuur een request naar localhost:8080 met curl. Zie je iets in je MITM venster?</li>
+                        <li>Wat gebeurt er als je rechtstreeks naar http://neverssl.com gaat?</li>
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>Kan inkomend verkeer groeperen</li>
+                            <li>Kan inspecteren en redirecten</li>
+                            <li>Voorbeeld: ik heb een VPS, meerdere domeinnamen voor verschillende websites, wil user
+                                niet dwingen poortnummer in te vullen.</li>
+                            <li>Kan gebruikt worden om "gewone" web servers van TLS te voorzien</li>
+                            <li>MITM proxy doet dit niet in alle verwachte scenario's, maar in principe kan redirect
+                                terug naar localhost,...</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>
+                    <ol>
+                        <li>Stel mitmproxy in als proxy voor HTTPS (afhankelijk van je browser).</li>
+                        <li>Surf naar www.ap.be</li>
+                        <li>Verklaar wat je ziet op basis vorige les</li>
+                    </ol>
+                </section>
+                <section>
+                    <ol>
+                        <li>Ga terug naar je oude proxy settings.</li>
+                        <li>Installeer het certificaat voor mitmproxy</li>
+                        <li>Stel localhost:8080 opnieuw in als HTTPS proxy.</li>
+                        <li>Start mitmproxy terug op.</li>
+                        <li>Surf naar https://www.w3schools.com/html/html_forms.asp</li>
+                        <li>Vul het formulier in.</li>
+                        <li>Inspecteer de flow door op een van de verzoeken te klikken.</li>
+                        <li>Wat zegt dit over proxy's en TLS?</li>
+                    </ol>
+                    <aside class="notes">
+                        Kan de session key bijhouden en importeren in Wireshark, zodat pakketten ook daar geïnspecteerd
+                        kunnen worden.
+                    </aside>
+                </section>
+                <section>
+                    Examon misleiden
+                    <aside class="notes">
+                        <ol>
+                            <li>Eigen belang: dit kan, maar je uitvoering moet perfect zijn.</li>
+                            <li>Zou eerst data moeten verzamelen en versies wijzigen regelmatig.</li>
+                            <li>Doorzoek de slides en de informatie over MITMproxy en stel een aanvalsplan voor.</li>
+                            <li>Tips:
+                            <ul>
+                                <li>Examon gebruikt een API, aangeboden over HTTPS</li>
+                                <li>Af en toe een bericht met het tijdstip.</li>
+                                <li>Af en toe een bericht met systeeminformatie en een screenshot.</li>
+                                <li>Binaire data: base64 formaat</li>
+                            </ul>
+                            <li>Wat zou Examon kunnen doen om dit te verhinderen?</li>
+                            <li>Short-lived certificaat in de client kan afbeeldingen ondertekenen.</li>
+                        </ol>
+                    </aside>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>
