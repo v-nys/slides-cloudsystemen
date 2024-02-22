@@ -221,7 +221,7 @@ document.cookie = "g=h"; // stelt één cookie in</code>
                             <li>klik desnoods op "meer info" zodat Windows toelaat te installeren</li>
                         </ul>
                         <li>Run in Windows Terminal het commando <code>mitmproxy</code></li>
-                        <li>Run in een tweede terminal: <code>fetch --proxy localhost:8080 neverssl.com</code></li>
+                        <li>Run in een tweede terminal: <code>curl --proxy localhost:8080 neverssl.com</code></li>
                         <li>Wat zie je in je terminalvenster?</li>
                         <li>Stop het commando <code>mitmproxy</code></li>
                         <ul>
@@ -239,7 +239,7 @@ document.cookie = "g=h"; // stelt één cookie in</code>
                             <li>dit start de (grafische) webversie</li>
                         </ul>
                         <li>Stel via "start" → "intercept" een filter in die responses tegenhoudt</li>
-                        <li>Navigeer met <code>curl</code> naar https://wttr.in/Antwerpen</li>
+                        <li>Navigeer met <code>curl</code> naar http://wttr.in/Antwerpen</li>
                         <li>Ga na dat je het request ziet in MITMWeb</li>
                         <li>Pas het weerbericht aan dat de ontvanger te zien krijgt</li>
                         <li>Laat het gewijzigde antwoord versturen</li>
