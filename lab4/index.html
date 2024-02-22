@@ -74,12 +74,9 @@
                 </aside>
             </section>
             <section>
-                <img src="./images/ghostery.svg" alt="logo Ghostery" />
-            </section>
-            <section>
 <pre>
 <code>// ongewone schrijfwijze
-allCookies = document.cookie; // "a=b;c=d;e=f"
+let allCookies = document.cookie; // "a=b;c=d;e=f"
 document.cookie = "g=h"; // stelt één cookie in</code>
 </pre>
                 <aside class="notes">
@@ -109,6 +106,9 @@ document.cookie = "g=h"; // stelt één cookie in</code>
                         <li>voorbeeld CSRF</li>
                         <li>"cross-site" = interactie tussen twee websites (via link, frame,...)</li>
                         <li>ter verduidelijking: hoeft geen "phishing" te zijn</li>
+                        <li>moet de andere site gewoon <strong>bezoeken</strong> bij slechte security settings</li>
+                        <li>andere site kan JS bevatten met een <code>fetch</code></li>
+                        <li>die fetch wordt door <strong>jouw</strong> PC uitgevoerd</li>
                     </ul>
                 </aside>
             </section>
@@ -149,7 +149,10 @@ document.cookie = "g=h"; // stelt één cookie in</code>
                 </aside>
             </section>
             <section>
-                local storage
+                <ul>
+                    <li>local storage</li>
+                    <li>indexedDB</li>
+                </ul>
                 <aside class="notes">
                     Niet gelinkt aan HTTP, access via JS. Ander toepassingsgebied.
                     <!-- cursustekst: https://www.geeksforgeeks.org/local-storage-vs-cookies/ -->
@@ -214,17 +217,16 @@ document.cookie = "g=h"; // stelt één cookie in</code>
                 <section>
                     <ol>
                         <li>Installeer mitmproxy</li>
-                        <li>Start op met het commando <code>mitmproxy</code></li>
-                        <li>Configureer je browser om als HTTP-proxy localhost:8080 te gebruiken</li>
                         <ul>
-                            <li>Zoek dit op voor jouw specifieke browser.</li>
+                            <li>klik desnoods op "meer info" zodat Windows toelaat te installeren</li>
                         </ul>
-                        <li>Controleer dat dit werkt door naar neverssl.com te surfen (kijk naar je terminalvenster)</li>
+                        <li>Run in Windows Terminal het commando <code>mitmproxy</code></li>
+                        <li>Run in een tweede terminal: <code>fetch --proxy localhost:8080 neverssl.com</code></li>
+                        <li>Wat zie je in je terminalvenster?</li>
                         <li>Stop het commando <code>mitmproxy</code></li>
                         <ul>
                             <li>Gebruik de toets <code>q</code></li>
                         </ul>
-                        <li>Na de les zet je alle originele settings terug.</li>
                     </ol>
                 </section>
                 <section>
@@ -236,12 +238,12 @@ document.cookie = "g=h"; // stelt één cookie in</code>
                         <ul>
                             <li>dit start de (grafische) webversie</li>
                         </ul>
-                        <li>Navigeer in je browser naar neverssl.com</li>
-                        <li>Zoek het request in MITMWeb</li>
-                        <li>Zorg dat de gebruiker in plaats daarvan terechtkomt op https://bit.ly/3SOlqjY</li>
-                        <ul>
-                            <li>Gebruik de info uit de tutorial om het antwoord van de server aan te passen.</li>
-                        </ul>
+                        <li>Stel via "start" → "intercept" een filter in die responses tegenhoudt</li>
+                        <li>Navigeer met <code>curl</code> naar https://wttr.in/Antwerpen</li>
+                        <li>Ga na dat je het request ziet in MITMWeb</li>
+                        <li>Pas het weerbericht aan dat de ontvanger te zien krijgt</li>
+                        <li>Laat het gewijzigde antwoord versturen</li>
+                        <li>Zie je het aangepaste weerbericht in de terminal?
                     </ol>
                 </section>
                 <section>
@@ -251,11 +253,10 @@ document.cookie = "g=h"; // stelt één cookie in</code>
                         <li>Lees de tekst tot en met "Listen port" op <a
                                 href="https://docs.mitmproxy.org/stable/concepts-modes/#reverse-proxy">deze pagina</a>
                         </li>
-                        <li>Start de Express applicatie van van op DigitAP op.</li>
-                        <li>Zorg dat verkeer naar localhost:8080 wordt omgeleid naar neverssl.com</li>
+                        <li>Zorg dat HTTP-verkeer naar localhost:8080 wordt omgeleid naar neverssl.com</li>
                         <li>Configureer de reverse proxy om requests te onderscheppen.</li>
-                        <li>Stuur een request naar localhost:8080 met curl. Zie je iets in je MITM venster?</li>
-                        <li>Wat gebeurt er als je rechtstreeks naar http://neverssl.com gaat?</li>
+                        <li>Stuur een request naar localhost:8080 met curl (zonder <code>--proxy</code> in het commando!). Zie je iets in je MITM venster?</li>
+                        <li>Wat gebeurt er als je rechtstreeks naar http://neverssl.com gaat met curl?</li>
                     </ul>
                     <aside class="notes">
                         <ul>
@@ -271,7 +272,14 @@ document.cookie = "g=h"; // stelt één cookie in</code>
                 </section>
                 <section>
                     <ol>
-                        <li>Stel mitmproxy in als proxy voor HTTPS (afhankelijk van je browser).</li>
+                        <li>Stel mitmproxy in als proxy voor je systeem.</li>
+                        <ul>
+                            <li>Gebruik het Windows menu, vul in "proxy"</li>
+                            <li>Open het instellingenvenster dat daar getoond wordt</li>
+                            <li>Het adres is localhost</li>
+                            <li>De poort is 80</li>
+                        </ul>
+                        <li>Zorg dat mitmproxy actief is</li>
                         <li>Surf naar www.ap.be</li>
                         <li>Verklaar wat je ziet op basis vorige les</li>
                     </ol>
@@ -279,8 +287,8 @@ document.cookie = "g=h"; // stelt één cookie in</code>
                 <section>
                     <ol>
                         <li>Ga terug naar je oude proxy settings.</li>
-                        <li>Installeer het certificaat voor mitmproxy</li>
-                        <li>Stel localhost:8080 opnieuw in als HTTPS proxy.</li>
+                        <li>Zoek op de site van mitmproxy hoe je hun certificaat kan installeren en doe dit.</li>
+                        <li>Stel localhost:8080 opnieuw in als proxy.</li>
                         <li>Start mitmproxy terug op.</li>
                         <li>Surf naar https://www.w3schools.com/html/html_forms.asp</li>
                         <li>Vul het formulier in.</li>
