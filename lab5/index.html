@@ -22,10 +22,12 @@
                         tot en met "Listen port"
                     </li>
                     <li>Zorg dat HTTP-verkeer naar localhost:8080 wordt omgeleid naar neverssl.com</li>
+                    <!-- enkel met terminalversie: --mode reverse:http://neverssl.com -->
                     <li>Configureer de reverse proxy om requests te onderscheppen.</li>
                     <li>Stuur een request naar localhost:8080 met curl (zonder <code>--proxy</code> in het commando!).
                         Zie je iets in je MITM venster?</li>
                     <li>Wat gebeurt er als je rechtstreeks naar http://neverssl.com gaat met curl?</li>
+                    <li>(Met je browser zie je dit niet altijd omwille van caching.)</li>
                 </ul>
                 <aside class="notes">
                     <ul>
@@ -39,56 +41,28 @@
                     </ul>
                 </aside>
             </section>
-            <!--<section>
-                <ol>
-                    <li>Stel mitmproxy in als proxy voor je systeem.</li>
-                    <ul>
-                        <li>Gebruik het Windows menu, vul in "proxy"</li>
-                        <li>Open het instellingenvenster dat daar getoond wordt</li>
-                        <li>Het adres is localhost</li>
-                        <li>De poort is 80</li>
-                    </ul>
-                    <li>Zorg dat mitmproxy actief is</li>
-                    <li>Surf naar www.ap.be</li>
-                    <li>Verklaar wat je ziet op basis vorige les</li>
-                </ol>
-            </section>-->
             <section>
                 <ol>
-                    <li>Zoek op de site van mitmproxy hoe je hun certificaat kan installeren en doe dit.</li>
+                    <li>Zoek op de site van mitmproxy hoe je hun certificaat manueel kan installeren en doe dit.</li>
                     <li>Stel localhost:8080 opnieuw in als proxy.</li>
-                    <li>Start mitmproxy terug op.</li>
+                    <ul>
+                        <li>Startknop → Proxyinstellingen → Proxyserver gebruiken</li>
+                    </ul>
+                    <li>Start mitmproxy terug op als <strong>gewone</strong> proxy.</li>
                     <li>Surf naar <a
                             href="https://www.w3schools.com/html/html_forms.asp">https://www.w3schools.com/html/html_forms.asp</a>
                     </li>
                     <li>Vul het formulier in.</li>
-                    <li>Inspecteer de flow door op een van de verzoeken te klikken.</li>
-                    <li>Wat zegt dit over proxy's en TLS?</li>
+                    <li>Stel een filter in voor enkel berichten met <code>action_page</code> in de URL.</li>
+                    <ul>
+                        <li>Dit werkt zoals intercept. Zie documentatie mitmproxy.</li>
+                    </ul>
                 </ol>
                 <aside class="notes">
                     Kan de session key bijhouden en importeren in Wireshark, zodat pakketten ook daar geïnspecteerd
                     kunnen worden.
                 </aside>
             </section>
-            <!--<section>
-                Examon misleiden
-                <aside class="notes">
-                    <ol>
-                        <li>Eigen belang: dit kan, maar je uitvoering moet perfect zijn.</li>
-                        <li>Zou eerst data moeten verzamelen en versies wijzigen regelmatig.</li>
-                        <li>Doorzoek de slides en de informatie over MITMproxy en stel een aanvalsplan voor.</li>
-                        <li>Tips:
-                            <ul>
-                                <li>Examon gebruikt een API, aangeboden over HTTPS</li>
-                                <li>Af en toe een bericht met het tijdstip.</li>
-                                <li>Af en toe een bericht met systeeminformatie en een screenshot.</li>
-                                <li>Binaire data: base64 formaat</li>
-                            </ul>
-                        <li>Wat zou Examon kunnen doen om dit te verhinderen?</li>
-                        <li>Short-lived certificaat in de client kan afbeeldingen ondertekenen.</li>
-                    </ol>
-                </aside>
-            </section>-->
             <section>
                 Laptops dicht
             </section>
