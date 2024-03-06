@@ -158,20 +158,47 @@
             </section>
             <section>
                 <img src="./images/tcp-uitwisseling.png" alt="uitwisseling data TCP" />
+                <aside class="notes">
+                    <ul>
+                        <li>venster = hoeveelheid bytes die zonder bevestiging doorgestuurd mogen worden</li>
+                        <li>niet zelfde als maximale grootte segment, want daarvan mogen er meerdere tegelijk onderweg zijn</li>
+                    </ul>
+                </aside>
             </section>
             <section>
-                <section>Opdracht</section>
+                <section>Opdrachten</section>
                 <section>
                     <ul>
-                        <li>clientpoort is vrij, serverpoort is 10000</li>
-                        <li>types berichten:</li>
-                        <ul>
-                            <li>registreren usernaam</li><!--user krijgt 0 of authenticatiecode terug-->
-                            <li>vrijgeven usernaam</li>
-                            <li>chatbericht (voorafgegaan door lengte authenticatiecode en authenticatiecode zelf)</li>
-                        </ul>
-                        <li><a href="https://nodejs.org/api/net.html#netcreateserveroptions-connectionlistener">dit
-                                voorbeeld</a> met <code>createServer</code> werkt veel "boilerplate" weg</li>
+                        <li>download het chatprogrmma met TCP sockets van DigitAP</li>
+                        <li>doe je best volgende vragen te beantwoorden door de code zelf te lezen</li>
+                        <li>hoe start je een chatsessie?</li>
+                        <li>wat moet je aanpassen in de client om te verbinden met een server naar keuze?</li>
+                        <li>wat gebeurt er als je meerdere servers tegelijk draait? waarom?</li>
+                        <li>wat is in deze programma's de functie van <code>textEncoder</code> en <code>textDecoder</code>?</li>
+                        <li>wat voor berichten kan een client allemaal versturen?</li>
+                        <li>wat voor berichten kan een server allemaal versturen?</li>
+                        <li>hoe herken je client en server in Wireshark?</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>hoe onthoudt de server mogelijke ontvangers voor een bericht?</li>
+                        <li>hoe filter je de berichten tot enkel die van het chatprogramma in Wireshark?</li>
+                        <li>kan je de verschillende types bericht herkennen in Wireshark?</li>
+                        <li>is er veel vertraging tussen het ontvangen van een bericht en de weergave op het scherm?</li>
+                        <li>waarom zie je precies een echo van de berichten die je zelf stuurt?</li>
+                        <li>waar wordt <code>newlineByte</code> gebruikt en waarom?</li>
+                        <li>is er een beperking op hoe lang een gebruikersnaam mag zijn?</li>
+                        <li>wat valt op in Wireshark als je een héél lang bericht verstuurt?</li>
+                        <li>kan je een chat over het netwerk doen?</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>zie je meer of minder TCP-segmenten als je over het netwerk communiceert dan zuiver lokaal?</li>
+                        <li>wat zie je in Wireshark als je een heel lang bericht <strong>over het netwerk</strong> verstuurt?</li>
+                        <li>kan de server een gebruiker met een specifieke naam aanspreken? verklaar</li>
+                        <li>op welke lagen kan je dit programma beter beveiligen en hoe?</li>
                     </ul>
                 </section>
             </section>
