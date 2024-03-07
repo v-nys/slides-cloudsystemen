@@ -100,13 +100,9 @@
                     <!-- TODO: afbeelding naast lijst? -->
                     <div style="display: flex; font-size: 65%;">
                         <ul style="flex-shrink: 0.5">
-                            <li>hou in code client adres en poort ontvanger bij</li>
+                            <li>ga na dat je het programma kan opstarten zoals op de afbeelding</li>
                             <li>gebruik <a href="https://nodejs.org/api/dgram.html#socketbindport-address-callback">deze
-                                    code</a> als vertrekpunt.</li>
-                            <ul>
-                                <li><code>bind</code> is om te luisteren op een poort</li>
-                                <li><code>send</code> stuurt gegevens</li>
-                            </ul>
+                                    code</a> als vertrekpunt om uit te leggen hoe deze code werkt.</li>
                             <li>kijk of je het verkeer kan vinden in Wireshark</li>
                             <li>kan je een klasgenoot contacteren?</li>
                         </ul>
@@ -164,12 +160,10 @@
             </section>
             <section>
                 <section>Opdrachten</section>
-                <section>
+                <section><p>Download eerst de code voor het chatprogramma over TCP. Beantwoord dan volgende vragen. Experimenteer, lees de code, gebruik Wireshark om inzicht op te doen.</p></section>
+                <section style="font-size: 20pt">
                     <ul>
-                        <li>download het chatprogrmma met TCP sockets van DigitAP</li>
-                        <li>doe je best volgende vragen te beantwoorden door de code zelf te lezen</li>
                         <li>hoe start je een chatsessie?</li>
-                        <li>wat moet je aanpassen in de client om te verbinden met een server naar keuze?</li>
                         <li>wat gebeurt er als je meerdere servers tegelijk draait? waarom?</li>
                         <li>wat is in deze programma's de functie van <code>textEncoder</code> en <code>textDecoder</code>?</li>
                         <li>wat voor berichten kan een client allemaal versturen?</li>
@@ -177,20 +171,20 @@
                         <li>hoe herken je client en server in Wireshark?</li>
                     </ul>
                 </section>
-                <section>
+                <section style="font-size: 20pt">
                     <ul>
                         <li>hoe onthoudt de server mogelijke ontvangers voor een bericht?</li>
                         <li>hoe filter je de berichten tot enkel die van het chatprogramma in Wireshark?</li>
                         <li>kan je de verschillende types bericht herkennen in Wireshark?</li>
                         <li>is er veel vertraging tussen het ontvangen van een bericht en de weergave op het scherm?</li>
-                        <li>waarom zie je precies een echo van de berichten die je zelf stuurt?</li>
+                        <li>waarom zie je een echo van de berichten die je zelf stuurt?</li>
                         <li>waar wordt <code>newlineByte</code> gebruikt en waarom?</li>
                         <li>is er een beperking op hoe lang een gebruikersnaam mag zijn?</li>
                         <li>wat valt op in Wireshark als je een héél lang bericht verstuurt?</li>
                         <li>kan je een chat over het netwerk doen?</li>
                     </ul>
                 </section>
-                <section>
+                <section style="font-size: 20pt">
                     <ul>
                         <li>zie je meer of minder TCP-segmenten als je over het netwerk communiceert dan zuiver lokaal?</li>
                         <li>wat zie je in Wireshark als je een heel lang bericht <strong>over het netwerk</strong> verstuurt?</li>
