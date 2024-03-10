@@ -28,7 +28,7 @@
                 </aside>
             </section>
             <section>
-                <table>
+                <table style="color: white">
                     <thead>
                         <tr>
                             <td></td>
@@ -37,19 +37,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>sterkte associatie<td></td>
+                        <tr><td>sterkte associatie</td>
                             <td>"vast"</td>
                             <td>"veranderlijk"</td>
                         </tr>
-                        <tr>structuur<td></td>
+                        <tr><td>structuur</td>
                             <td>vlak</td>
                             <td>hiërarchisch</td>
                         </tr>
-                        <tr>afhankelijk van<td></td>
+                        <tr><td>afhankelijk van</td>
                             <td>fabrikant hardware</td>
                             <td>subnet</td>
                         </tr>
-                        <tr>vergelijk met<td></td>
+                        <tr><td>vergelijk met</td>
                             <td>rijksregisternummer</td>
                             <td>thuisadres</td>
                         </tr>
@@ -68,13 +68,7 @@
                 </aside>
             </section>
             <section>
-                <img src="./images/ARP.png" />
-                <aside class="notes">
-                    Het is dus genoeg om iets tot bij de router te krijgen die aangesloten is op dat subnet.
-                </aside>
-            </section>
-            <section>
-                IPv4 (classless)
+                IPv4 (classful)
                 <aside class="notes">
                     <ul>
                         <li>Bestaat ook ouder systeem met "klassen". Achterhaald, zeker voor programmeurs.</li>
@@ -92,13 +86,13 @@
                         <li>Je mag rekenmachine in "programming mode" gebruiken.</li>
                     </ul>
                 </aside>
-                <section>
+            </section>
                     <section>
                         <ul>
                             <li>hostgedeelte</li>
                             <li>netwerkgedeelte</li>
                         </ul>
-                        <aside>
+                        <aside class="notes">
                             <ul>
                                 <li>Machines op zelfde netwerk hebben zelfde netwerkgedeelte (ander hostgedeelte)</li>
                                 <li>Uit elkaar halen: netmasker nodig</li>
@@ -118,9 +112,9 @@
                     </section>
                     <section>
                         <pre>
-                            11000000.1010000.00000000.11011110
-                            11111111.1111111.00000000.00000000
-                            11000000.1010000.00000000.00000000
+11000000.1010000.00000000.11011110 # 192.168.0.222
+11111111.1111111.00000000.00000000 # 255.255.0.0
+11000000.1010000.00000000.00000000
                         </pre>
                         <aside class="notes">
                             hoe zou je dan hostgedeelte kunnen krijgen?
@@ -128,68 +122,143 @@
                     </section>
                     <section>
                         speciale adressen
-                        <aside>
+                        <aside class="notes">
                             <ul>
                                 <li>netwerkadres wordt eigenlijk niet als dusdanig gebruikt</li>
                                 <li>maar netmasker toepassen doet niets, dus zou niet te onderscheiden zijn van andere
                                     adressen binnen zelfde netwerk</li>
+                                <li>netwerkadres zonder submasker kan verwijzen naar oudernet of naar (eerste) subnet</li>
                                 <li>broadcastadres is wat naam zegt, verkregen door alle hostbits op 1 te zetten</li>
                                 <li>denkvraag: aantal hosts op netwerk met netmasker van lengte N?</li>
                             </ul>
                         </aside>
                     </section>
                     <section>
-                        Adressen voor:
+                        <section>Opdrachten
+                            <aside class="notes">
+                                Gebruik rekenmachine in programmeermodus.
+                            </aside>
+                        </section>
+                        <section>
+                            <ul>
+                                <li>Is 10.4.3.0/16 een geldig netwerkadres?</li>
+                                <li>Is 192.168.0.0/16 een geldig netwerkadres?</li>
+                                <li>Is 192.168.0.0/8 een geldig netwerkadres?</li>
+                                <li>Is 10.4.224.0/18 een geldig netwerkadres?</li>
+                                <li>Is 172.25.13.0/24 een subnet van 172.16.0.0/12?</li>
+                                <li>Is 172.16.0.0/13 een subnet van 172.16.0.0/12?</li>
+                                <li>Met welke eerste bytewaarden kunnen subnetten van 10.0.0.0/8 allemaal beginnen?</li>
+                                <li>Met welke eerste twee bytewaarden kunnen subnetten van 200.16.0.0/12 allemaal beginnen?</li>
+                            </ul>
+                        </section>
+                        <section>
+                            <p>Gegeven:</p>
+                            <ul>
+                                <li>IP-adres: 192.168.1.13</li>
+                                <li>lengte netmasker: 27</li>
+                            </ul>
+                            <p>Gevraagd:</p>
+                            <ul>
+                                <li>Netwerkadres</li>
+                                <li>Broadcastadres</li>
+                                <li>Hostgedeelte (binair)</li>
+                                <li>Eerste en laatste hostadres subnet</li>
+                                <li>Maximaal aantal hosts</li>
+                            </ul>
+                        </section>
+                        <section>
+                            <p>Gegeven:</p>
+                            <ul>
+                                <li>IP-adres: 172.16.5.88</li>
+                                <li>lengte netmasker: 20</li>
+                            </ul>
+                            <p>Gevraagd:</p>
+                            <ul>
+                                <li>Netwerkadres</li>
+                                <li>Broadcastadres</li>
+                                <li>Hostgedeelte (binair)</li>
+                                <li>Eerste en laatste hostadres subnet</li>
+                                <li>Maximaal aantal hosts</li>
+                            </ul>
+                        </section>
+                        <section>
+                            <p>Gegeven:</p>
+                            <ul>
+                                <li>IP-adres: 10.4.3.2</li>
+                                <li>lengte netmasker: 18</li>
+                            </ul>
+                            <p>Gevraagd:</p>
+                            <ul>
+                                <li>Netwerkadres</li>
+                                <li>Broadcastadres</li>
+                                <li>Hostgedeelte (binair)</li>
+                                <li>Eerste en laatste hostadres subnet</li>
+                                <li>Maximaal aantal hosts</li>
+                            </ul>
+                        </section>
+                    </section>
+                    <section>
+                        Laptops dicht
+                    </section>
+                    <section>
+                        IP-adressen voor:<br>
                         <ul>
                             <li>subnetten (netwerk en broadcast)</li>
-                            <li>routers en hosts</li>
+                            <li>routers</li>
+                            <li>hosts</li>
                             <li><strong>niet</strong> voor hubs of switches</li>
                         </ul>
+                        <aside class="notes">
+                            Voor routers minstens twee adressen voor fysieke interfaces!
+                        </aside>
                     </section>
                     <section>
                         Routers (gateways)
+                        <aside class="notes">
                         <ul>
                             <li>in essentie gewoon toestel met twee of meer fysieke netwerkinterfaces (i.e. loopback
                                 etc. telt niet)</li>
                             <li>soort verkeersagent: inspecteert adresinformatie en stuurt door op juiste interface</li>
                         </ul>
+                        </aside>
                     </section>
-                    <section>
+                    <!--<section>
                         <img src="./images/routeringstabel.png" />
-                    </section>
+                    </section>-->
                     <section>
                         Default gateway
                         <aside class="notes">
                             Moet dus bereikbaar zijn op het netwerk.
                         </aside>
                     </section>
-
                     <section>
-                        Opdrachten
-                        <!--opdracht: gegeven decimale notatie, gebruik rekenmachine in programmeermodus-->
-                        <!--opdracht: wat is netwerkadres, wat is broadcastadres voor dat netwerk, telkens in decimale notatie? wat is max aantal hosts?-->
-                        <!--voorbeelden 1 tot 3 gebruiken van Ward en Wouter-->
-                        <!--opdracht PT: aanvullen (statische) routeringstabellen-->
-                        <!--start met eenvoudig voorbeeld, laat hen dan zelf iets groter voorbeeld doen-->
+                        <img src="./images/ARP.png" />
+                        <aside class="notes">
+                            Het is dus genoeg om iets tot bij de router te krijgen die aangesloten is op dat subnet.
+                        </aside>
                     </section>
-                    <!-- laptops kunnen even open blijven -->
+                    <section>
+                        Demo: invullen routeringstabel
+                    </section>
                     <section>
                         Toekenning van adressen
                         <aside class="notes">
-                            - statisch
-                            - geautomatiseerd (typisch gewoon <strong>een</strong> vrij adres nodig)
-                            - werkwijze is niet te kennen
-                            - ISP,... heeft blokken gekocht
+                            <ul>
+                                <li>statisch</li>
+                                <li>geautomatiseerd (typisch gewoon <strong>een</strong> vrij adres nodig)</li>
+                                <li>werkwijze is niet te kennen</li>
+                                <li>ISP,... heeft blokken gekocht</li>
+                                <li>netmasker in PT <strong>klopt niet altijd</strong></li>
+                            </ul>
                         </aside>
                     </section>
-                    <!-- opdracht: maak connectiviteit mogelijk -->
-
-
-
-
-
-                    <!-- dit kan misschien start labo 2 zijn? -->
                     <section>
+                        Opdracht
+                    </section>
+                    <!-- laptops kunnen even open blijven -->
+                    <!-- opdracht: maak connectiviteit mogelijk -->
+                    <!-- dit kan misschien start labo 2 zijn? -->
+                    <!--<section>
                         Laptops dicht
                     </section>
                     <section>
@@ -198,13 +267,7 @@
                             Stel dat heel het Internet één groot lokaal netwerk was (en dat we toch IPv4 gebruikten), hoe veel adressen dan?
                             (toon met rekenmachine)
                         </aside>
-                    </section>
-
-
-
-
-
-
+                    </section>-->
         </div>
     </div>
 
