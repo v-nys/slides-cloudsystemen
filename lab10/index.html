@@ -1,0 +1,97 @@
+<!doctype htmlopzij>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Labo 9</title>
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/dist/theme/black.css">
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>Laptops dicht</section>
+            <section>
+                Achilleshiel IPv4
+                <aside class="notes">
+                    <ul>
+                        <li>
+                            Stel dat heel het Internet één groot lokaal netwerk was (en dat we toch IPv4 gebruikten),
+                            hoe veel
+                            adressen dan?</li>
+                        <li>Ruwweg 1 IP per 2 personen...</li>
+                        <li>Iedereen in klas waarschijnlijk minstens 2 toestellen met IP-adres</li>
+                        <li>Routers hebben ook al minstens 2 IP's/stuk nodig...</li>
+                        <li>Op Azure,... moet je eigenlijk <strong>betalen</strong> voor je publieke adres!</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                NAT (PAT)
+                <aside class="notes">
+                    <ul>
+                        <li>Netwerkadresvertaling / Network Address Translation</li>
+                        <li>Vergelijk: ipconfig en myip.com</li>
+                        <li>(indien IPv4): zal voor iedereen <strong>zelfde</strong> zijn!</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/2t8-WRZWCq8?si=IbcDw07DOS24lm2u&amp;start=47"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                <aside class="notes">
+                    <ul>
+                        <li>bestaan variaties op het concept, maar dit is wat je typisch moet weten als programmeur</li>
+                        <ul>
+                            <li>sommige zaken moeten <strong>eerst</strong> de connectie opstarten</li>
+                            <li>poort die zichtbaar is aan ontvangerkant is niet noodzakelijk echte poort van de
+                                afzender</li>
+                            <li>PAT doorbreekt protocolstapel</li>
+                            <li>nadeel: routers moeten details van TCP/UDP kennen, zijn wel dominant maar hindert andere
+                                zaken die bovenop IP staan</li>
+                            <li>screenshot port forwarding Telenet settings = <strong>dit</strong></li>
+                            <li>NAT/PAT doet al vrij lang goed dienst, maar is een "hack". Manuele port forwarding is soms nodig, nieuwe protocols bovenop IP implementeren is lastig.</li>
+                        </ul>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                IPv6
+                <aside class="notes">
+                    <ul>
+                        <li>Langere termijnoplossing</li>
+                        <li>Adresruimte gaat van (ruw gesteld, belangrijke nuances te maken) 2^32 naar 2^128</li>
+                        <li>Dus per oud adres een volledig Internet (2^64). Dat aantal maal zichzelf.</li>
+                    </ul>
+                </aside>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>
