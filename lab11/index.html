@@ -1,0 +1,131 @@
+<!doctype htmlopzij>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Labo 11</title>
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/dist/theme/black.css">
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                Laptops dicht
+            </section>
+            <section>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/J0NuOlA2xDc?si=hFJDadYzxPoWgbA8"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </section>
+            <section>
+                container vs. VM
+                <aside class="notes">
+                    <ul>
+                        <li>VM = van de grond op (simulatie HW)</li>
+                        <li>container = enkel exact wat applicatie nodig heeft</li>
+                        <ul>
+                            <li>tweede VM = dubbele kost</li>
+                            <li>tweede container = minimale extra kost</li>
+                        </ul>
+                        <li>In de eerste plaats <strong>Linux</strong>, omdat images dus die kernel delen.</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                image vs. container
+                <aside class="notes">
+                    <ul>
+                        <li>"template" vs. instantie</li>
+                        <li>vergelijk met "klasse" vs. "object"</li>
+                        <li>filmpje: image = onderste lagen (liggen vast), container heeft jouw eigen extra bovenste
+                            laag</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                Klassikale workshop (deel 1)
+                <aside class="notes">
+                    Doorlopen "Build a containerized..." op Azure tot en met "Customize a Docker image to run your own
+                    web app."
+                </aside>
+            </section>
+            <section>
+                <section>Opdrachten</section>
+                <section>
+                    <ul>
+                        <li>Maak een nieuwe Dockerfile.</li>
+                        <li>Zorg dat hij voortbouwt op <code>ubuntu:latest</code></li>
+                        <li>Zorg dat hij beschikt over <code>curl</code>. In Ubuntu installeer je dit via <code>apt-get
+                                update && apt-get install -y curl</code>.</li>
+                        <li>Zorg dat hij de broncode van neverssl.com toont in de terminal wanneer hij start.</li>
+                        <li>Test uit door hem te builden en uit te voeren.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>Download "voorbeeldapplicatie Express" (onder "Applicatielaag: HTTP")</li>
+                        <li>Maak een nieuwe Dockerfile.</li>
+                        <li>Zorg dat hij voortbouwt op <code>ubuntu:latest</code></li>
+                        <li>Zorg dat hij een map <code>/app</code> heeft.</li>
+                        <li>Kopieer de bestanden <code>hello.js</code>, <code>package.json</code> en
+                            <code>package-lock.json</code> naar deze map.
+                        </li>
+                        <li>Zorg dat de nodige packages geïnstalleerd worden en dat de applicatie wordt opgestart
+                            wanneer de container start.</li>
+                        <li>Zorg ook dat hij naar de gebruikte poort luistert.</li>
+                        <li>Build en start de container. Gebruik `-p HOSTPOORT:GUESTPOORT` (met daar de juiste
+                            poortnummers) om te port forwarden.</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                Je bestanden terugvinden (demo)
+                <aside class="notes">Login op container, trek parallel met SSH</aside>
+            </section>
+            <section>
+                Workshop (deel 2)
+                <aside class="notes">
+                    Doorlopen. Niet overal hetzelfde als in schriftelijke uitleg ⇒ vraag het aan de lector!
+                    Wissen resource group op het einde: moet specifiek op detailpagina van die groep staan.
+                </aside>
+            </section>
+            <section>
+                <section>
+                    <ul>
+                        <li>Stop je container met de Express applicatie.</li>
+                        <li>Maak een Docker hub account aan. Gebruik best geen temp mail.</li>
+                        <li>Registreer de image van de vorige opdracht als publieke repository (dat is gratis).</li>
+                        <li>Vraag een buur om zijn/haar namespace en repository name.</li>
+                        <li>Run de image van je buur, opnieuw met de juiste port forwarding.</li>
+                        <li>Kan je de applicatie bezoeken?</li>
+                    </ul>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>
