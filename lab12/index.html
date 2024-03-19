@@ -19,26 +19,16 @@
                 Laptops open 🥳
             </section>
             <section>
-                <section>
-                    <ul>
-                        <li>Download "voorbeeldapplicatie Express" (onder "Applicatielaag: HTTP")</li>
-                        <li>Maak een nieuwe Dockerfile.</li>
-                        <li>Zorg dat hij voortbouwt op <code>ubuntu:latest</code></li>
-                        <li>Zorg dat hij een map <code>/app</code> heeft.</li>
-                        <li>Kopieer de bestanden <code>hello.js</code>, <code>package.json</code> en
-                            <code>package-lock.json</code> naar deze map.
-                        </li>
-                        <li>Zorg dat de nodige packages geïnstalleerd worden en dat de applicatie wordt opgestart
-                            wanneer de container start.</li>
-                        <li>Zorg ook dat hij naar de gebruikte poort luistert.</li>
-                        <li>Build en start de container. Gebruik `-p HOSTPOORT:GUESTPOORT` (met daar de juiste
-                            poortnummers) om te port forwarden.</li>
-                    </ul>
-                </section>
-            </section>
-            <section>
-                Je bestanden terugvinden (demo)
-                <aside class="notes">Login op container, trek parallel met SSH</aside>
+                <ul>
+                    <li>Download "voorbeeldapplicatie Express" (onder "Applicatielaag: HTTP")</li>
+                    <li>Maak een nieuwe Dockerfile op basis van <code>ubuntu:latest</code></li>
+                    <li>Zorg dat hij een map <code>/app</code> heeft.</li>
+                    <li>Kopieer de nodige bestanden naar deze map. </li>
+                    <li>Zorg dat de nodige packages geïnstalleerd worden en dat de applicatie wordt opgestart
+                        wanneer de container start.</li>
+                    <li>Zorg ook dat hij naar de gebruikte poort luistert.</li>
+                    <li>Build en start de container.</li>
+                </ul>
             </section>
             <section>
                 Workshop (deel 2)
@@ -48,16 +38,14 @@
                 </aside>
             </section>
             <section>
-                <section>
-                    <ul>
-                        <li>Stop je container met de Express applicatie.</li>
-                        <li>Maak een Docker hub account aan. Gebruik best geen temp mail.</li>
-                        <li>Registreer de image van de vorige opdracht als publieke repository (dat is gratis).</li>
-                        <li>Vraag een buur om zijn/haar namespace en repository name.</li>
-                        <li>Run de image van je buur, opnieuw met de juiste port forwarding.</li>
-                        <li>Kan je de applicatie bezoeken?</li>
-                    </ul>
-                </section>
+                <ul>
+                    <li>Stop je container met de Express applicatie.</li>
+                    <li>Maak een Docker hub account aan. Gebruik best geen temp mail.</li>
+                    <li>Registreer de image van de vorige opdracht als publieke repository (dat is gratis).</li>
+                    <li>Vraag een buur om zijn/haar namespace en repository name.</li>
+                    <li>Run de image van je buur, opnieuw met de juiste port forwarding.</li>
+                    <li>Kan je de applicatie bezoeken?</li>
+                </ul>
             </section>
             <section>
                 Laptops dicht
@@ -68,10 +56,13 @@
                     <ul>
                         <li>Beide voor persistente opslag, zoals harde schijf</li>
                         <li>Dus kan container verwijderen, nieuwe container aan oud volume koppelen</li>
-                        <li>volumes beheer je via <code>docker volume ...</code> en zijn beter te managen, maar moeilijker te bekijken</li>
-                        <li>bind mounts zijn mappen van je lokale machine, gelinkt aan mappen van een container (zoals bij port forwarding)</li>
+                        <li>volumes beheer je via <code>docker volume ...</code> en zijn beter te managen, maar
+                            moeilijker te bekijken</li>
+                        <li>bind mounts zijn mappen van je lokale machine, gelinkt aan mappen van een container (zoals
+                            bij port forwarding)</li>
                         <li>meestal worden volumes aangeraden</li>
-                        <li>syntax: <code>-v volumenaam:/map/op/container</code> of <code>-v /lokale/map:/map/op/container</li>
+                        <li>syntax: <code>-v volumenaam:/map/op/container</code> of <code>-v
+                                /lokale/map:/map/op/container</code></li>
                         <li>toon voorbeeldje uit instructies voor een image op Docker hub</li>
                     </ul>
                 </aside>
@@ -94,10 +85,12 @@
                 <aside class="notes">
                     <ul>
                         <li>Heel typisch: applicatie met meerdere diensten (bv. web + DB)</li>
-                        <li>Kan één custom container met beide maken, maar is complex, heel customized, bijna zoals aparte machine onderhouden</li>
+                        <li>Kan één custom container met beide maken, maar is complex, heel customized, bijna zoals
+                            aparte machine onderhouden</li>
                         <li>Beter: twee containers laten samen werken</li>
                         <li>Simpelste manier: container stack definiëren (met Docker Compose)</li>
-                        <li><strong>Containers kunnen elkaar aanspreken alsof hun servicenamen in DNS staan</strong></li>
+                        <li><strong>Containers kunnen elkaar aanspreken alsof hun servicenamen in DNS staan</strong>
+                        </li>
                     </ul>
                 </aside>
             </section>
@@ -105,24 +98,30 @@
                 docker-compose.yml vs. Dockerfile
                 <aside class="notes">
                     <ul>
-                        <li>ander doel (individuele image volledig definiëren vs. <strong>bestaande</strong> image situeren</li>
+                        <li>ander doel (individuele image volledig definiëren vs. <strong>bestaande</strong> image
+                            situeren</li>
                         <li>andere syntax (YAML: bijna zoals JSON, maar andere syntax)</li>
                         <ul>
                             <li>zijn online tools om YAML te valideren, nuttig want is gebaseerd op indentatie</li>
                         </ul>
-                        <li>andere functionaliteit (zaken zoals port forwarding, volumes staan los van definitie van image)</li>
+                        <li>andere functionaliteit (zaken zoals port forwarding, volumes staan los van definitie van
+                            image)</li>
                     </ul>
                 </aside>
             </section>
             <section>
                 <section>Opdrachten</section>
-                <section>Start zelf een MariaDB container op. Kies zelf de logingegevens en de poort waarop hij draait. Controleer dat je kan verbinden via Workbench.</section>
-                <section>Herhaal, maar gebruik geen command line opties. Zet alles in een docker-compose.yml (met maar één service).</section>
+                <section>Start zelf een MariaDB container op. Kies zelf de logingegevens en de poort waarop hij draait.
+                    Controleer dat je kan verbinden via Workbench.</section>
+                <section>Herhaal, maar gebruik geen command line opties. Zet alles in een docker-compose.yml (met maar
+                    één service).</section>
                 <section>
                     <ul>
                         <li>Maak een stack met de Express applicatie op DigitAP en een MariaDB.</li>
                         <ul>
-                            <li>De Express applicatie is niet af te halen van Docker Hub, dus zorg eerst dat daar een image voor is.</li>
+                            <li>De Express applicatie is niet af te halen van Docker Hub, dus zorg eerst dat daar een
+                                image voor is.</li>
+                            <li>Voor MySQL kan je een image van Docker Hub gebruiken.</li>
                         </ul>
                         <li>Gebruik omgevingsvariabelen om de logingegevens hetzelfde te maken in beide containers.</li>
                     </ul>
