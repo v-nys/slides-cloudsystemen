@@ -28,12 +28,16 @@
                     <li>Test uit door hem te builden en uit te voeren.</li>
                 </ul>
             </section>
-
+            <section>
+                Tip: <code>docker exec -it NAAM_CONTAINER bash</code>
+            </section>
             <section>
                 <ul>
                     <li>Download "voorbeeldapplicatie Express" (onder "Applicatielaag: HTTP")</li>
                     <li>Maak een nieuwe Dockerfile op basis van <code>ubuntu:latest</code></li>
                     <li>Kopieer de nodige bestanden naar een map <code>/app</code> in de image. </li>
+                    <li>Update de lijst van pakketten (zie vorige oefening)</li>
+                    <li>Installeer <code>nodejs</code> en <code>npm</code> (idem)</li>
                     <li>Zorg dat de nodige packages geïnstalleerd worden in de image.</li>
                     <li>Zorg dat de applicatie wordt opgestart wanneer de container start.</li>
                     <li>Zorg ook dat hij naar de gebruikte poort luistert.</li>
