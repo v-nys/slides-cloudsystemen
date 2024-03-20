@@ -20,12 +20,22 @@
             </section>
             <section>
                 <ul>
+                    <li>Maak een nieuwe Dockerfile.</li>
+                    <li>Zorg dat hij voortbouwt op <code>ubuntu:latest</code></li>
+                    <li>Zorg dat hij beschikt over <code>curl</code>. In Ubuntu installeer je dit via <code>apt-get
+                            update && apt-get install -y curl</code>.</li>
+                    <li>Zorg dat hij de broncode van neverssl.com toont in de terminal wanneer hij start.</li>
+                    <li>Test uit door hem te builden en uit te voeren.</li>
+                </ul>
+            </section>
+
+            <section>
+                <ul>
                     <li>Download "voorbeeldapplicatie Express" (onder "Applicatielaag: HTTP")</li>
                     <li>Maak een nieuwe Dockerfile op basis van <code>ubuntu:latest</code></li>
-                    <li>Zorg dat hij een map <code>/app</code> heeft.</li>
-                    <li>Kopieer de nodige bestanden naar deze map. </li>
-                    <li>Zorg dat de nodige packages geïnstalleerd worden en dat de applicatie wordt opgestart
-                        wanneer de container start.</li>
+                    <li>Kopieer de nodige bestanden naar een map <code>/app</code> in de image. </li>
+                    <li>Zorg dat de nodige packages geïnstalleerd worden in de image.</li>
+                    <li>Zorg dat de applicatie wordt opgestart wanneer de container start.</li>
                     <li>Zorg ook dat hij naar de gebruikte poort luistert.</li>
                     <li>Build en start de container.</li>
                 </ul>
@@ -126,6 +136,11 @@
                         <li>Gebruik omgevingsvariabelen om de logingegevens hetzelfde te maken in beide containers.</li>
                     </ul>
                 </section>
+            </section>
+            <section>
+                <section>Uitbreidingsopdrachten</section>
+                <section>Herschrijf het gastenboek om <a href="https://www.npmjs.com/package/neo4j-driver">Neo4j</a> te gebruiken. Begin met de Dockerkant.</section>
+                <section>Herschrijf het gastenboek om <a href="https://www.npmjs.com/package/mongodb">MongoDB</a> te gebruiken. Begin met de Dockerkant.</section>
             </section>
         </div>
     </div>
