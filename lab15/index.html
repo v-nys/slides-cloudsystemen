@@ -56,15 +56,13 @@
                     </ul>
                 </section>
                 <section>
-                    <p>Herschrijf het gastenboek om een self-hosted <a
-                            href="https://www.npmjs.com/package/mongodb">MongoDB</a> te gebruiken. Zoek op Docker Hub
-                        naar de <code>mongo</code> image en lees de voorbeeldcode. MongoDB kan datums opslaan zonder
-                        omzetting.</p>
-                </section>
-                <section>
                     <p>Pas de code voor het gastenboek (met om het even welke database) aan om een testmail te
                         versturen. Dit doe je met nodemailer (eerste voorbeeld in de documentatie) en met Mailhog. Zie
                         op Docker Hub: 42bv/mailhog</p>
+                </section>
+                <section>
+                    Zet via één Compose file <strong>twee</strong> Apache web servers op. Gebruikers zouden geen
+                    poortnummer moeten ingeven voor de juiste, gewoon een URL. Dit kan via Traefik, een reverse proxy die geconfigureerd kan worden op basis van Docker metadata. Vraag instructies aan een LLM. Het is overdreven een domeinnaam te registreren, maar je kan het onderscheid maken via het URL-pad. Ga ook na welke instructies voor Compose je niet begrijpt en test je setup lokaal.
                 </section>
 
             </section>
@@ -97,7 +95,8 @@
                             <li>pre-receive (ook via exit code, maar voor accepteren push)</li>
                             <li>post-receive</li>
                         </ul>
-                        <li>staan (omwille van locatie) standaard <strong>niet</strong> in versiebeheer en dus ook niet gelinkt aan branches</li>
+                        <li>staan (omwille van locatie) standaard <strong>niet</strong> in versiebeheer en dus ook niet
+                            gelinkt aan branches</li>
                         <li>kunnen in allerlei scriptingtalen geschreven zijn (Bash, PowerShell, Python, PHP,...)</li>
                         <li>kunnen op developermachines staan, maar ook op remotes</li>
                         <li>gaan hier niet echt op oefenen: is gewoon programmeren</li>
@@ -113,7 +112,8 @@
                         <li>maar wel dominant: zonder setup geïntegreerd met populaire dienst</li>
                         <li>gratis voor publieke code (zoals vaker bij Github)</li>
                         <li>scripten blijft mogelijk, maar er is bijkomende structuur ("kant-en-klare" actions)</li>
-                        <li>runnen standaard in specifieke VM, scripts runnen lokaal en (tenzij ze zelf VM of container starten) kan resultaat dus verschillen</li>
+                        <li>runnen standaard in specifieke VM, scripts runnen lokaal en (tenzij ze zelf VM of container
+                            starten) kan resultaat dus verschillen</li>
                     </ul>
                 </aside>
             </section>
@@ -142,7 +142,8 @@
                 Act
                 <aside class="notes">
                     <ul>
-                        <li>runt niet echt op bepaalde event, maar kunnen wel zeggen te doen alsof event plaatsvindt om juiste workflows te runnen</li>
+                        <li>runt niet echt op bepaalde event, maar kunnen wel zeggen te doen alsof event plaatsvindt om
+                            juiste workflows te runnen</li>
                         <li>kunnen dit automatiseren met een heel korte Git hook</li>
                     </ul>
                 </aside>
