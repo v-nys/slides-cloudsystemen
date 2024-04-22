@@ -50,9 +50,10 @@
                         <li>Maak een stack met de Express applicatie op DigitAP en een MariaDB.</li>
                         <ul>
                             <li>De Express komt niet van Docker Hub, je bouwt ze zelf.</li>
-                            <li>Voor MySQL kan je een image van Docker Hub gebruiken.</li>
+                            <li>Voor MariaDB kan je een image van Docker Hub gebruiken.</li>
                         </ul>
                         <li>Gebruik omgevingsvariabelen om de logingegevens hetzelfde te maken in beide containers.</li>
+                        <li>Het duurt een tijdje voor MariaDB verbindingen aanvaardt. <code>sh -c "sleep 60; echo 'ik ben wakker'"</code> is <strong>één</strong> commando met een ingebouwde vertraging.</li>
                     </ul>
                 </section>
                 <section>
